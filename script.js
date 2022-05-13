@@ -2,6 +2,7 @@ let gameOn = false;
 let level = 0;
 let userPattern = [];
 let gamePattern = [];
+let testPattern = [...gamePattern];
 let colors = ["purple", "pink", "blue", "green"];
 
 $(document).keypress(function () {
@@ -9,32 +10,20 @@ $(document).keypress(function () {
     $("h1").text("Level: " + level);
     gameOn = true;
     gameSequence();
+
+    
   }
 });
 
+$(".box").click(function (e) {
+  let clickedColor = e.target.id;
+  userPattern.push(clickedColor);
+  //  push user pattern to array
 
- $(".box").click(function (e) {
-   
-     let clickedColor = e.target.id;
-     userPattern.push(clickedColor);
-    //  push user pattern to array
-     
-     buttonPress(clickedColor);
-    // gets users pattern
-     if (userPattern.length === level) {
-       let testPattern = [...gamePattern];
-       for (let i = 0; i < level; i++) {
-         if (testPattern[i] === userPattern[i]) {
-           gameSequence();
-           console.log("correct");
-         } else {
-           console.log("wrong");
-         }
-       }
-     }
+  buttonPress(clickedColor);
 
- });
-
+  checkAns();
+});
 
 function gameSequence() {
   level++;
@@ -60,16 +49,34 @@ function buttonPress(color) {
   }, 300);
 }
 
-
 function gameOver() {
-   $('body').addClass("gameover");
-   setTimeout(function () {
-      
-     $('body').removeClass("gameover");
-   }, 300);
+  $("body").addClass("gameover");
+  setTimeout(function () {
+    $("body").removeClass("gameover");
+  }, 300);
 
   $("h1").text("Press Any Key to Start");
   level = 0;
   gamePattern = [];
   gameOn = false;
+}
+
+function checkAns() {
+  console.log("made it here");
+  testPattern = [...gamePattern];
+  while (testPattern.length > 0) {
+    
+    console.log("then here");
+    if (userPattern[level-1] === testPattern[level-1]) {
+      console.log("yes");
+      testPattern.shift();
+    } else {
+      console.log("no");
+      testPattern.shift();
+      gameOver()
+    }
+    
+  }
+  gameSequence()
+  //  testPattern.shift();
 }
