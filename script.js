@@ -12,14 +12,29 @@ $(document).keypress(function () {
   }
 });
 
-$(".box").click(function (e) {
-  let clickedColor = e.target.id;
-  userPattern.push(clickedColor);
-  console.log("color is " + clickedColor);
-  buttonPress(clickedColor);
-  let checkArray = [...gamePattern];
-  checkUserChoices(checkArray);
-});
+
+ $(".box").click(function (e) {
+   
+     let clickedColor = e.target.id;
+     userPattern.push(clickedColor);
+    //  push user pattern to array
+     
+     buttonPress(clickedColor);
+    // gets users pattern
+     if (userPattern.length === level) {
+       let testPattern = [...gamePattern];
+       for (let i = 0; i < level; i++) {
+         if (testPattern[i] === userPattern[i]) {
+           gameSequence();
+           console.log("correct");
+         } else {
+           console.log("wrong");
+         }
+       }
+     }
+
+ });
+
 
 function gameSequence() {
   level++;
@@ -45,51 +60,15 @@ function buttonPress(color) {
   }, 300);
 }
 
-function checkUserChoices(array) {
-//   while(array > 0){
- if (array[0] === userPattern[0]) {
-   array.shift();
-   userPattern = [];
-   
- } else {
-   console.log("did not run");
-   $("body").addClass("gameover");
-   setTimeout(function () {
-     $("body").removeClass("gameover");
-   }, 300);
-   // } while loop
-   gameSequence();
-   //   let checkUser = [...userPattern];
-   console.log("in the checkchoices:" + array);
-   // console.log("color is " + color)
-   // while array length is not 0, check
-   
- }
-  //     while (checkArray.length > 0) {
-  //         console.log(checkArray)
-  //         userPattern = [];
 
-  //       console.log("user clicks: " + userPattern);
-  //       console.log("check array: " + checkArray);
-
-  //       if (checkArray[0] == userPattern[0]) {
-  //         userPattern = [];
-  //         checkArray.shift();
-  //         console.log(checkArray)
-  //         score += 1;
-  //         $("h1").text("Score: " + score);
-
-  //         console.log("correct");
-  //       } else {
-  //         console.log("wrong af and perform end game");
-  //         gameOn = false;
-  //       }
-  //     }
-  //     getRandomColor();
-
-  //   while check array >0
-}
 function gameOver() {
+   $('body').addClass("gameover");
+   setTimeout(function () {
+      
+     $('body').removeClass("gameover");
+   }, 300);
+
+  $("h1").text("Press Any Key to Start");
   level = 0;
   gamePattern = [];
   gameOn = false;
