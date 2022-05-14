@@ -1,5 +1,5 @@
 let gameOn = false;
-let level = 0;
+var level = 0;
 let userPattern = [];
 let gamePattern = [];
 let testPattern = [...gamePattern];
@@ -11,18 +11,17 @@ $(document).keypress(function () {
     gameOn = true;
     gameSequence();
 
-    
+    $(".box").click(function (e) {
+      let clickedColor = e.target.id;
+      userPattern.push(clickedColor);
+      //  push user pattern to array
+
+      buttonPress(clickedColor);
+
+      checkAns();
+    });
+    //
   }
-});
-
-$(".box").click(function (e) {
-  let clickedColor = e.target.id;
-  userPattern.push(clickedColor);
-  //  push user pattern to array
-
-  buttonPress(clickedColor);
-
-  checkAns();
 });
 
 function gameSequence() {
@@ -56,27 +55,45 @@ function gameOver() {
   }, 300);
 
   $("h1").text("Press Any Key to Start");
+  console.log("game over");
   level = 0;
   gamePattern = [];
+  userPattern = [];
   gameOn = false;
 }
 
 function checkAns() {
-  console.log("made it here");
-  testPattern = [...gamePattern];
-  while (testPattern.length > 0) {
-    
-    console.log("then here");
-    if (userPattern[level-1] === testPattern[level-1]) {
-      console.log("yes");
-      testPattern.shift();
-    } else {
-      console.log("no");
-      testPattern.shift();
-      gameOver()
+  console.log("--------------");
+  console.log("game pattern: " + gamePattern);
+  console.log("user pattern: " + userPattern);
+  console.log("user length is" + userPattern.length);
+  console.log("level is " + level);
+
+  if (userPattern.length == level) {
+    let testArea =[]
+    console.log("checking answer");
+    for (let i = 0; i < userPattern.length; i++) {
+      if (userPattern[i] === gamePattern[i]) {
+      testArea.push(true)
+        //  how to end loop if it catches an error
+
+        console.log("correct?");
+      } else {
+        console.log("wrong?");
+        testArea.push(false)
+      }
     }
-    
+    if(testArea.includes(false)){
+      console.log("somethign wrong was found")
+      gameOver()
+    }else{
+      console.log("running next round")
+      userPattern = []
+      gameSequence()
+    }
+  } else {
+    console.log("waiting for more clicks");
   }
-  gameSequence()
+  // gameSequence()
   //  testPattern.shift();
 }
