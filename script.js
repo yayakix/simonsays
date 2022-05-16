@@ -18,7 +18,7 @@ $(document).keypress(function () {
 
       buttonPress(clickedColor);
 
-      checkAns();
+      checkAns2();
     });
     //
   }
@@ -101,16 +101,44 @@ function checkAns() {
 
 //  make a check answer function after each click and check every user pattern until it matches game pattern length
 function checkAns2() {
+  console.log("got here");
+  let wrong = 0;
   if (userPattern.length < gamePattern.length) {
     for (let i = 0; i < userPattern.length; i++) {
       if (userPattern[i] !== gamePattern[i]) {
-        console.log("wrong answer");
+        wrong += 1;
+        console.log("wrong answer1");
       } else {
+        console.log("not wrong ans1");
         // i want to keep the game going, aka wait for more choices
       }
     }
+    if (wrong > 0) {
+      console.log("restart game");
+      gameOver();
+    } else {
+      console.log("continue game");
+    }
+    //
   } else if (userPattern.length === gamePattern.length) {
     // else if user pattern is equal to game pattern, this will be the check that causes the round to move on
-    // empty user pattern for them to try again
+    // empty user pattern for them to try again'
+    for (let i = 0; i < userPattern.length; i++) {
+      if (userPattern[i] !== gamePattern[i]) {
+        wrong += 1;
+        console.log("wrong answer2");
+      } else {
+        console.log("not wrong ans2");
+        // i want to keep the game going, aka wait for more choices
+      }
+    }
+    if (wrong > 0) {
+      gameOver();
+      console.log("restart game");
+    } else {
+      console.log("continue game");
+      userPattern = [];
+      gameSequence();
+    }
   }
 }
