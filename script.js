@@ -56,6 +56,7 @@ function gameOver() {
 
   $("h1").text("Press Any Key to Start");
   console.log("game over");
+
   level = 0;
   gamePattern = [];
   userPattern = [];
@@ -70,30 +71,46 @@ function checkAns() {
   console.log("level is " + level);
 
   if (userPattern.length == level) {
-    let testArea =[]
+    let testArea = [];
     console.log("checking answer");
     for (let i = 0; i < userPattern.length; i++) {
       if (userPattern[i] === gamePattern[i]) {
-      testArea.push(true)
+        testArea.push(true);
         //  how to end loop if it catches an error
 
         console.log("correct?");
       } else {
         console.log("wrong?");
-        testArea.push(false)
+        testArea.push(false);
       }
     }
-    if(testArea.includes(false)){
-      console.log("somethign wrong was found")
-      gameOver()
-    }else{
-      console.log("running next round")
-      userPattern = []
-      gameSequence()
+    if (testArea.includes(false)) {
+      console.log("somethign wrong was found");
+      gameOver();
+    } else {
+      console.log("running next round");
+      userPattern = [];
+      gameSequence();
     }
   } else {
     console.log("waiting for more clicks");
   }
   // gameSequence()
   //  testPattern.shift();
+}
+
+//  make a check answer function after each click and check every user pattern until it matches game pattern length
+function checkAns2() {
+  if (userPattern.length < gamePattern.length) {
+    for (let i = 0; i < userPattern.length; i++) {
+      if (userPattern[i] !== gamePattern[i]) {
+        console.log("wrong answer");
+      } else {
+        // i want to keep the game going, aka wait for more choices
+      }
+    }
+  } else if (userPattern.length === gamePattern.length) {
+    // else if user pattern is equal to game pattern, this will be the check that causes the round to move on
+    // empty user pattern for them to try again
+  }
 }
