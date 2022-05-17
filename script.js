@@ -7,8 +7,9 @@ let colors = ["purple", "pink", "blue", "green"];
 
 $(document).keypress(function () {
   if (gameOn === false) {
-    $("h1").text("Level: " + level);
+    // $("h1").text("Levell: " + level);
     gameOn = true;
+
     gameSequence();
 
     $(".box").click(function (e) {
@@ -34,10 +35,10 @@ function gameSequence() {
 
 function makeFlash(nextColor) {
   $("#" + nextColor)
-    .fadeOut(150)
+    .fadeOut(250)
     .fadeIn(150)
-    .fadeOut(150)
-    .fadeIn(150);
+    .fadeOut(250)
+    .fadeIn(250);
   // makes color by id flash
 }
 
@@ -49,6 +50,10 @@ function buttonPress(color) {
 }
 
 function gameOver() {
+  level = 0;
+  gamePattern = [];
+  userPattern = [];
+  gameOn = false;
   $("body").addClass("gameover");
   setTimeout(function () {
     $("body").removeClass("gameover");
@@ -57,10 +62,7 @@ function gameOver() {
   $("h1").text("Press Any Key to Start");
   console.log("game over");
 
-  level = 0;
-  gamePattern = [];
-  userPattern = [];
-  gameOn = false;
+  
 }
 
 function checkAns() {
@@ -142,3 +144,4 @@ function checkAns2() {
     }
   }
 }
+

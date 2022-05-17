@@ -65,3 +65,19 @@ h1{
 .gameover{
     background-color: #EB5353;
 }
+
+@media only screen and (max-width: 600px) {
+    body{
+        display: block;
+        text-align: center;
+    }
+    h1{
+        font-size: 20px;
+    }
+  .box{
+      max-width: 150px;
+      max-height: 150px;
+      padding: 10px;
+
+  }
+}
