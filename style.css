@@ -1,104 +1,95 @@
-*{
-    box-sizing: border-box;
-    margin: auto;
-    
+* {
+  box-sizing: border-box;
+  margin: auto;
 }
-body{
-     display: flex;
-    justify-content: center;
-    align-items: center;
-    /* background-color: #EEEEEE; */
-    background-color: black;
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: #EEEEEE; */
+  background-color: black;
 }
-.grid{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows:  100px 250px 300px;
-    grid-template-areas:
-    "t t t t" 
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 100px 250px 300px;
+  grid-template-areas:
+    "t t t t"
     "p p i i "
     "b b g g";
-       
 }
-h1{
-    grid-area: t;
-    /* font-family: 'Josefin Sans', sans-serif; */
-    /* font-family: 'Koulen', sans-serif; */
- /* font-family: 'Zen Loop', cursive; */
- font-family: 'Inconsolata', monospace;
-    color: white;
-    font-size: 50px;
-}
-
-.box{
-    height: 250px;
-    width: 250px;
-    border-radius: 21px;
-    border: 2px solid white;
-    margin-left: 10px;
+h1 {
+  grid-area: t;
+  /* font-family: 'Josefin Sans', sans-serif; */
+  /* font-family: 'Koulen', sans-serif; */
+  /* font-family: 'Zen Loop', cursive; */
+  font-family: "Inconsolata", monospace;
+  color: white;
+  font-size: 50px;
 }
 
-#purple{
-    grid-area: p;
-    background-color: #A85CF9;
-
+.box {
+  height: 250px;
+  width: 250px;
+  border-radius: 21px;
+  border: 2px solid white;
+  margin-left: 10px;
 }
-#pink{
-    grid-area: i;
-    background-color: #FFC4DD;
 
+#purple {
+  grid-area: p;
+  background-color: #a85cf9;
 }
-#blue{
-    background-color: #5EE6EB;
-    grid-area: b;
-
+#pink {
+  grid-area: i;
+  background-color: #ffc4dd;
 }
-#green{
-    background-color: #83BD75;
-    grid-area: g;
-
+#blue {
+  background-color: #5ee6eb;
+  grid-area: b;
+}
+#green {
+  background-color: #83bd75;
+  grid-area: g;
 }
 .pressed {
   box-shadow: 0 0 20px white;
   background-color: white;
 }
-.gameover{
-    background-color: #EB5353;
+.gameover {
+  background-color: #eb5353;
 }
 
 @media only screen and (max-width: 600px) {
-     body{
-        display: flex;
-        justify-content: center;
-    }
-    .grid{
+  body {
+    display: flex;
+    justify-content: center;
+  }
+  .grid {
     display: grid;
     grid-gap: 2px;
-    grid-template-columns: auto auto ;
+    grid-template-columns: auto auto;
     grid-template-rows: auto auto auto;
     grid-template-areas:
-    "t t" 
-    "p i "
-    "b g";
-       
-}
-   
-    h1{
-        font-size: 20px;
-    }
-  .box{
-      max-width: 150px;
-      max-height: 150px;
-
+      "t t"
+      "p i "
+      "b g";
   }
-  .right{
-      margin-right:100px ;
-      margin-left: 0px;
-      
-  }
-  .left{
-      margin-left: 100px;
-      margin-right: 0px;
 
+  h1 {
+    font-size: 20px;
+    margin-bottom: 30px;
+  }
+  .box {
+    max-width: 150px;
+    max-height: 150px;
+  }
+  .right {
+    margin-right: 100px;
+    margin-left: 0px;
+  }
+  .left {
+    margin-left: 100px;
+    margin-right: 0px;
   }
 }
