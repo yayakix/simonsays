@@ -15,6 +15,7 @@ $(document).keypress(function () {
 
   gamePattern = [];
   userPattern = [];
+  console.log('CALLING GAME SEQUENCE BEGINNGIN')
     gameSequence();
 
     $(".box").click(function (e) {
@@ -147,8 +148,7 @@ function checkAns2() {
         console.log("restart game");
       } else {
         console.log("continue game pattern");
-        userPattern = [];
-        gameSequence();
+  
       }
 
 
@@ -182,6 +182,8 @@ function checkAns2() {
       } else {
         console.log("continue game pattern");
         userPattern = [];
+          console.log("CALLING GAME SEQUENCE END OF FINAL CHECK");
+
         gameSequence();
       }
 
