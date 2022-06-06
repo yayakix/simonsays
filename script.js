@@ -68,23 +68,23 @@ function buttonPress(color) {
 }
 
 function gameOver() {
-  level = 0;
-  gamePattern = [];
-  userPattern = [];
-  gameOn = false;
+  
+  // level = 0;
+  // gamePattern = [];
+  // userPattern = [];
+  // gameOn = false;
   $("body").addClass("gameover");
   setTimeout(function () {
     $("body").removeClass("gameover");
-  }, 300);
+  }, 400);
 
   $("h1").text("Press Any Key to Start");
-  console.log("-----game over---");
 
-   console.log("------gameoversection--------");
-   console.log("game pattern: " + gamePattern);
-   console.log("user pattern: " + userPattern);
-   console.log("user length is" + userPattern.length);
-   console.log("level is " + level);
+   setTimeout(function () {
+     location.reload();
+   }, 500);
+  
+
 }
 
 // function checkAns() {
