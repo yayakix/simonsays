@@ -1,7 +1,7 @@
 # Simon Says Game
 
 ## Link
-Here is the <a href="hhttps://simonsaysgame23422.netlify.app/" target='_blank'>link to game</a>
+Here is the <a href="https://simonsaysgame23422.netlify.app/" target='_blank'>link to game</a>
 
 <img src='simongameimg.png' alt='color picker game '/>
 
